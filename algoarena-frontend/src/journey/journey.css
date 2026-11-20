@@ -1,0 +1,28 @@
+/* Journey screens. Colours fall back to the AlgoArena palette if theme vars are missing. */
+.jr { --c-cyan: var(--color-cyan, #2de2e6); --c-violet: var(--color-violet, #8b5cf6); --c-amber: var(--color-amber, #ffb627); --c-void: var(--color-void, #0a0e17); --c-panel: var(--color-panel, #131a2a); }
+.jr-enter-fwd { animation: jr-in-fwd .45s cubic-bezier(.2,.8,.2,1) both; }
+.jr-enter-back { animation: jr-in-back .45s cubic-bezier(.2,.8,.2,1) both; }
+.jr-rise { animation: jr-rise .6s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes jr-in-fwd { from { opacity: 0; transform: translateX(40px) scale(.98); } to { opacity: 1; transform: none; } }
+@keyframes jr-in-back { from { opacity: 0; transform: translateX(-40px) scale(.98); } to { opacity: 1; transform: none; } }
+@keyframes jr-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+.jr-boot { opacity: 0; animation: jr-rise .5s ease-out forwards; }
+.jr-glow { animation: jr-glow 2.2s ease-in-out infinite; }
+@keyframes jr-glow { 0%,100% { box-shadow: 0 0 14px color-mix(in srgb, var(--c-cyan) 35%, transparent); } 50% { box-shadow: 0 0 34px color-mix(in srgb, var(--c-cyan) 70%, transparent); } }
+.jr-float { animation: jr-float 3.4s ease-in-out infinite; }
+@keyframes jr-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+.jr-pop { animation: jr-pop .3s ease-out; }
+@keyframes jr-pop { 0% { transform: scale(.94); } 60% { transform: scale(1.03); } 100% { transform: scale(1); } }
+.jr-shake { animation: jr-shake .4s; }
+@keyframes jr-shake { 20%,60% { transform: translateX(-6px); } 40%,80% { transform: translateX(6px); } }
+.jr-option { transition: transform .15s, border-color .15s, background .15s, box-shadow .15s; }
+.jr-option:hover:not(:disabled) { transform: translateY(-2px); border-color: color-mix(in srgb, var(--c-cyan) 60%, transparent); }
+.jr-option[aria-pressed="true"] { border-color: var(--c-cyan); background: color-mix(in srgb, var(--c-cyan) 12%, var(--c-panel)); box-shadow: 0 0 22px color-mix(in srgb, var(--c-cyan) 30%, transparent); animation: jr-pop .3s ease-out; }
+.jr-scan { position: relative; overflow: hidden; }
+.jr-scan::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--c-cyan) 10%, transparent), transparent); height: 40%; animation: jr-scan 4s linear infinite; pointer-events: none; }
+@keyframes jr-scan { from { transform: translateY(-100%); } to { transform: translateY(300%); } }
+.jr-confetti { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.jr-confetti span { position: absolute; top: -12px; width: 8px; height: 14px; border-radius: 2px; opacity: 0; animation: jr-fall linear forwards; }
+@keyframes jr-fall { 0% { opacity: 1; transform: translateY(0) rotate(0); } 100% { opacity: 0; transform: translateY(520px) rotate(540deg); } }
+.jr-path::before { content: ""; position: absolute; left: 27px; top: 0; bottom: 0; width: 2px; background: linear-gradient(var(--c-cyan), var(--c-violet), transparent); opacity: .35; }
+@media (prefers-reduced-motion: reduce) { .jr *, .jr-enter-fwd, .jr-enter-back, .jr-rise, .jr-boot, .jr-glow, .jr-float, .jr-confetti span { animation: none !important; opacity: 1 !important; } }

@@ -1,0 +1,107 @@
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-sans: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --color-void: #0a0e17;
+  --color-panel: #131a2a;
+  --color-panel-border: #232b3d;
+  --color-cyan: #2de2e6;
+  --color-violet: #8b5cf6;
+  --color-amber: #ffb627;
+  --color-fog: #c7d2e0;
+}
+
+body {
+  background-color: var(--color-void);
+  background-image:
+    linear-gradient(rgba(45, 226, 230, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(45, 226, 230, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(40px, -30px);
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.bg-orb {
+  animation: drift 12s ease-in-out infinite;
+}
+
+.bg-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.bg-scanline {
+  animation: scanline 6s linear infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-10%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh);
+    opacity: 0;
+  }
+}
+
+@keyframes laser {
+  0% {
+    transform: translate(-10vw, -10vh) rotate(35deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(110vw, 60vh) rotate(35deg);
+    opacity: 0;
+  }
+}
+
+.fall-word {
+  animation: fall linear infinite;
+}
+
+.laser-shot {
+  animation: laser ease-in infinite;
+}
