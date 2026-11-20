@@ -27,7 +27,7 @@ type AuthCtx = {
   refreshUser: () => Promise<void>
 }
 
-const AuthContext = createContext<AuthCtx | null>(null)
+export const AuthContext = createContext<AuthCtx | null>(null)
 const TOKEN_KEY = 'algoarena_token'
 
 async function request(url: string, body: object) {
