@@ -3,3 +3,12 @@ dist
 .env
 .env.*
 *.zip
+server/users.json
+_backup_before_journey/
+upload_for_claude/
+files/
+frontend/
+report_*.txt
+/StackBreachGame.tsx
+/StackQuiz.tsx
+/StackTopicsGrid.tsx
